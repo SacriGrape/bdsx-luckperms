@@ -1,0 +1,16 @@
+import { setCommandPermission } from "./commandHandler";
+import { registerPermission } from "./permission";
+
+let commands: { command: string, value: boolean }[] = [{ command: "camerashake", value: false }, { command: "changesetting", value: false }, { command: "clear", value: false }, { command: "clearspawnpoint", value: false }, { command: "clone", value: false }, { command: "daylock", value: false }, { command: "deop", value: false }, { command: "dialogue", value: false }, { command: "difficulty", value: false }, { command: "effect", value: false }, { command: "enchant", value: false }, { command: "event", value: false }, { command: "execute", value: false }, { command: "fill", value: false }, { command: "fog", value: false }, { command: "function", value: false }, { command: "gamemode", value: false }, { command: "gamerule", value: false }, { command: "give", value: false }, { command: "kick", value: false }, { command: "kill", value: false }, { command: "list", value: true }, { command: "locate", value: false }, { command: "me", value: true }, { command: "mobevent", value: false }, { command: "music", value: false }, { command: "op", value: false }, { command: "particle", value: false }, { command: "permission", value: false }, { command: "playanimation", value: false }, { command: "playsound", value: false }, { command: "reload", value: false }, { command: "replaceitem", value: false }, { command: "ride", value: false }, { command: "save", value: false }, { command: "say", value: false }, { command: "schedule", value: false }, { command: "scoreboard", value: false }, { command: "setblock", value: false }, { command: "setmaxplayers", value: false }, { command: "setworldspawn", value: false }, { command: "spawnpoint", value: false }, { command: "spreadplayers", value: false }, { command: "stop", value: false }, { command: "stopsound", value: false }, { command: "structure", value: false }, { command: "summon", value: false }, { command: "tag", value: false }, { command: "teleport", value: false }, { command: "tell", value: true }, { command: "tellraw", value: false }, { command: "testfor", value: false }, { command: "testforblock", value: false }, { command: "testforblocks", value: false }, { command: "tickingarea", value: false }, { command: "time", value: false }, { command: "title", value: false }, { command: "titleraw", value: false }, { command: "toggledownfall", value: false }, { command: "weather", value: false }, { command: "whitelist", value: false }, { command: "wsserver", value: false }, { command: "xp", value: false }];
+
+for (let command of commands) {
+    registerPermissionAndSetCommand(command.command, command.value);
+}
+
+function registerPermissionAndSetCommand(commandName: string, value: boolean) {
+    registerPermission(`minecraft.command.${commandName}`)
+        .description(`Gives access to the vanilla command: ${commandName}`)
+        .default(value)
+        .buildAndRegister();
+    setCommandPermission(commandName, `minecraft.command.${commandName}`);
+};
