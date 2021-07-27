@@ -59,7 +59,7 @@ function createKnownPermissions() {
 }
 
 events.serverOpen.on(() => {
-    command.register("test", "test").overload(() => {
+    command.register("test", "Prints the editor JSON to console").overload(() => {
         let test = createCompleteEditorJson();
         console.log(JSON.stringify(test, null, 4));
     }, {});
