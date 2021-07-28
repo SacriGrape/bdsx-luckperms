@@ -1,7 +1,9 @@
-import { Player } from "../../bdsx/bds/player";
+import { Player } from "bdsx/bds/player";
+import { serverInstance } from "bdsx/bds/server";
 import { getXuid } from "./functions";
+import { addPlayerToStorage, permissionStorage } from "./permission";
 
-const groups = new Map<string, Group>();
+export const groups = new Map<string, Group>();
 
 class GroupBuilder {
     protected name: string;
@@ -73,5 +75,11 @@ export function giveGroup(name: string, player: Player) {
     if (!group) {
         throw new Error(`Group does not exist: ${name}`);
     }
+    setGroupValue(xuid, name, true);
 };
 
+export function setGroupValue(xuid: string, group: string, value: boolean) {
+    addPlayerToStorage(xuid);
+    permissionStorage[xuid].groups[group] = value;
+    serverInstance.updateCommandList();
+}

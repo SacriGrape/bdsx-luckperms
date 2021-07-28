@@ -1,13 +1,11 @@
-import { Actor } from "../../bdsx/bds/actor";
-import { CommandRegistry } from "../../bdsx/bds/command";
-import { Certificate } from "../../bdsx/bds/connreq";
-import { Player } from "../../bdsx/bds/player";
-import { pdb } from "../../bdsx/core";
-import { CxxVector } from "../../bdsx/cxxvector";
-import { UNDNAME_NAME_ONLY } from "../../bdsx/dbghelp";
-import { events } from "../../bdsx/event";
-import { CxxString, int32_t, uint8_t, void_t } from "../../bdsx/nativetype";
-import { ProcHacker } from "../../bdsx/prochacker";
+import { CommandRegistry } from "bdsx/bds/command";
+import { Certificate } from "bdsx/bds/connreq";
+import { Player } from "bdsx/bds/player";
+import { pdb } from "bdsx/core";
+import { CxxVector } from "bdsx/cxxvector";
+import { UNDNAME_NAME_ONLY } from "bdsx/dbghelp";
+import { CxxString, int32_t } from "bdsx/nativetype";
+import { ProcHacker } from "bdsx/prochacker";
 
 const hacker = ProcHacker.load("../pdb.ini", ["Player::getCertificate", "Player::getCommandPermissionLevel", "CommandRegistry::getAliases"], UNDNAME_NAME_ONLY);
 pdb.close();

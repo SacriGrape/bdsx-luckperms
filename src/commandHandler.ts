@@ -1,14 +1,14 @@
 import { appendFileSync } from "fs";
-import { AbilitiesIndex } from "../../bdsx/bds/abilities";
-import { AttributeId } from "../../bdsx/bds/attribute";
-import { CommandCheatFlag, CommandFlag, CommandParameterDataType, CommandPermissionLevel, CommandVisibilityFlag } from "../../bdsx/bds/command";
-import { MinecraftPacketIds } from "../../bdsx/bds/packetids";
-import { CraftingEventPacket } from "../../bdsx/bds/packets";
-import { Player, PlayerPermission, ServerPlayer } from "../../bdsx/bds/player";
-import { serverInstance } from "../../bdsx/bds/server";
-import { CANCEL } from "../../bdsx/common";
-import { events } from "../../bdsx/event";
-import { nethook } from "../../bdsx/nethook";
+import { AbilitiesIndex } from "bdsx/bds/abilities";
+import { AttributeId } from "bdsx/bds/attribute";
+import { CommandCheatFlag, CommandFlag, CommandParameterDataType, CommandPermissionLevel, CommandVisibilityFlag } from "bdsx/bds/command";
+import { MinecraftPacketIds } from "bdsx/bds/packetids";
+import { CraftingEventPacket } from "bdsx/bds/packets";
+import { Player, PlayerPermission, ServerPlayer } from "bdsx/bds/player";
+import { serverInstance } from "bdsx/bds/server";
+import { CANCEL } from "bdsx/common";
+import { events } from "bdsx/event";
+import { nethook } from "bdsx/nethook";
 import { CommandRegistry_getAliases } from "./functions";
 import { getPermission } from "./permission";
 
