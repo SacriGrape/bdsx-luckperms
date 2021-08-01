@@ -1,4 +1,4 @@
-import { http, https } from "follow-redirects";
+/*import { http, https } from "follow-redirects";
 import { command } from "bdsx/command";
 import { events } from "bdsx/event";
 import { addPlayerToStorage, permissions, permissionStorage, updatePermission } from "./permission";
@@ -6,7 +6,7 @@ import axios from "axios";
 import { ServerPlayer } from "bdsx/bds/player";
 import { setCommandPermission } from "./commandHandler";
 import { CxxString } from "bdsx/nativetype";
-import { groups } from "./groups";
+import { groups, updateGroupNode } from "./groups";
 import { group } from "console";
 
 function createCompleteEditorJson(): any {
@@ -30,7 +30,6 @@ function createMetadata() {
     metadata.pluginVersion = "1.0.0"
     return metadata;
 }
-
 function createPermissionHolders() {
     let permissionHolders: any = [];
     for (let xuid of Object.keys(permissionStorage)) {
@@ -116,10 +115,25 @@ events.serverOpen.on(() => {
 
 function handleChanges(changes: { type: string, id: string, nodes: { key: string, value: boolean }[] }[]) {
     for (let change of changes) {
-        let xuid = change.id;
-        let nodeChanges = change.nodes;
-        for (let nodeChange of nodeChanges) {
-            updatePermission(xuid, nodeChange.key, nodeChange.value);
+        if (change.type == "group") {
+            let id = change.id;
+            let nodeChanges = change.nodes;
+            let group = groups.get(id);
+            if (group) {
+                group.permissions = [];
+            }
+            for (let nodeChange of nodeChanges) {
+                updateGroupNode(id, nodeChange.key, nodeChange.value);
+            }
+        } else {
+            let xuid = change.id;
+            let nodeChanges = change.nodes;
+            let user = permissionStorage[xuid];
+            if (!user) return;
+            user.permissions = {}
+            for (let nodeChange of nodeChanges) {
+                updatePermission(xuid, nodeChange.key, nodeChange.value);
+            }
         }
     }
 }
@@ -134,4 +148,4 @@ function handleTrackDeletions(changes: any) {
 
 function handlesUserDeletions(changes: any) {
 
-}
+}*/

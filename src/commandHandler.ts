@@ -1,4 +1,4 @@
-import { appendFileSync } from "fs";
+/*import { appendFileSync } from "fs";
 import { AbilitiesIndex } from "bdsx/bds/abilities";
 import { AttributeId } from "bdsx/bds/attribute";
 import { CommandCheatFlag, CommandFlag, CommandParameterDataType, CommandPermissionLevel, CommandVisibilityFlag } from "bdsx/bds/command";
@@ -77,4 +77,4 @@ events.command.on((c, o, ct) => {
         return 0;
     }
     return;
-});
+});*/

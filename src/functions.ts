@@ -4,8 +4,9 @@ import { Player } from "bdsx/bds/player";
 import { pdb } from "bdsx/core";
 import { CxxVector } from "bdsx/cxxvector";
 import { UNDNAME_NAME_ONLY } from "bdsx/dbghelp";
-import { CxxString, int32_t } from "bdsx/nativetype";
 import { ProcHacker } from "bdsx/prochacker";
+import { CxxString, int32_t } from "bdsx/nativetype";
+
 
 const hacker = ProcHacker.load("../pdb.ini", ["Player::getCertificate", "Player::getCommandPermissionLevel", "CommandRegistry::getAliases"], UNDNAME_NAME_ONLY);
 pdb.close();
@@ -18,6 +19,10 @@ const Player_getCertificate = hacker.js("Player::getCertificate", Certificate, n
 export function getXuid(player: Player): string {
     let cert = Player_getCertificate(player);
     return cert.getXuid();
+}
+
+export function returns4() {
+    return 4;
 }
 
 function onGetCommandPermissionLevel(player: Player): int32_t {
